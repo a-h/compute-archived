@@ -1,2 +1,42 @@
-$primary-color: #cccccc;
-$secondary-color: #61dafb;
+// COLOURS ---------------------------------------------------------------------
+// https://coolors.co/08090a-a7a2a9-f4f7f5-575a5e-222823
+
+$black: #08090a;
+$silver: #a7a2a9;
+$white: #f4f7f5;
+$greyMid: #575a5e;
+$greyGreen: #222823;
+
+// MIXINS ----------------------------------------------------------------------
+
+// Lighten a color
+// @param {Color} $color - color to tint
+// @return {Color}
+@function tint-25($color) {
+  @return mix($white, $color, 25%);
+}
+@function tint-50($color) {
+  @return mix($white, $color, 50%);
+}
+@function tint-75($color) {
+  @return mix($white, $color, 75%);
+}
+@function tint-max($color) {
+  @return mix($white, $color, 85%);
+}
+
+// Darken a color
+// @param {Color} $color - color to shade
+// @return {Color}
+@function shade-25($color) {
+  @return mix($black, $color, 25%);
+}
+@function shade-50($color) {
+  @return mix($black, $color, 50%);
+}
+@function shade-75($color) {
+  @return mix($black, $color, 75%);
+}
+@function shade-max($color) {
+  @return mix($black, $color, 85%);
+}

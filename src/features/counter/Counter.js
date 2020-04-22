@@ -40,28 +40,32 @@ export function Counter() {
     );
   }
 
+  console.log(styles);
+
   return (
     <div>
       <header className="app-header">
         <div className={styles.row}>
-          <h1>
-            Question {index + 1} of {count}
+          <h1 className={styles.progress}>
+            Question <span className={styles['q-num']}>{index + 1}</span> of <span className={styles['q-total']}>{count}</span>
           </h1>
         </div>
       </header>
       <article className="app-article">
-        <div className={styles.row}>{question.q}</div>
+        <div className={`${styles.row} question`}>
+          <h2 className={styles.question}>{question.q}</h2>
+        </div>
         <div className={styles.row}>
           <button
-            className={styles.button}
+            className={styles.button + ' ' + styles.no}
             style={{ marginRight: 20 }}
-            aria-label="Yes"
+            aria-label="No"
             onClick={() => dispatch(answer(false))}
-          >
+            >
             No
           </button>
           <button
-            className={styles.button}
+            className={styles.button + ' ' + styles.yes}
             style={{ marginLeft: 20 }}
             aria-label="Yes"
             onClick={() => dispatch(answer(true))}
@@ -71,7 +75,7 @@ export function Counter() {
         </div>
         <div className={styles.row}>
           <button
-            className={styles.button}
+            className={styles.button + ' ' + styles.back}
             style={{ marginRight: 20 }}
             aria-label="Back"
             onClick={() => dispatch(previous())}
@@ -82,22 +86,16 @@ export function Counter() {
       </article>
       <aside className="app-aside">
         <div className={styles.row}>
-          <h3>EC2</h3>
+          <h3 className={styles.platform}>EC2</h3>
+          <p className={styles.rationale}>{question.ec2.rationale}</p>
         </div>
         <div className={styles.row}>
-          <p>{question.ec2.rationale}</p>
+          <h3 className={styles.platform}>Containers</h3>
+          <p className={styles.rationale}>{question.containers.rationale}</p>
         </div>
         <div className={styles.row}>
-          <h3>Containers</h3>
-        </div>
-        <div className={styles.row}>
-          <p>{question.containers.rationale}</p>
-        </div>
-        <div className={styles.row}>
-          <h3>Serverless</h3>
-        </div>
-        <div className={styles.row}>
-          <p>{question.lambda.rationale}</p>
+          <h3 className={styles.platform}>Serverless</h3>
+          <p className={styles.rationale}>{question.lambda.rationale}</p>
         </div>
       </aside>
     </div>

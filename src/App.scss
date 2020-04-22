@@ -4,6 +4,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: $white;
+  color: $black;
   text-align: center;
 }
 
@@ -23,12 +25,10 @@
 }
 
 .app-header {
-  background-color: $primary-color;
   font-size: calc(10px + 2vmin);
 }
 
 .app-link {
   color: rgb(112, 76, 182);
-  color: $secondary-color;
 }
 
