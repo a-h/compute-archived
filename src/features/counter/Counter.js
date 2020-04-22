@@ -10,7 +10,7 @@ import {
   selectEnd,
 } from "./counterSlice";
 import { VictoryBar, VictoryChart } from "victory";
-import styles from "./Counter.module.css";
+import styles from "./Counter.module.scss";
 
 export function Counter() {
   const index = useSelector(selectIndex);
