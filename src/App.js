@@ -4,10 +4,8 @@ import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-          <Counter />
-      </header>
+    <div className="app">
+      <Counter />
     </div>
   );
 }
