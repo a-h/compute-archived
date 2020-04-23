@@ -11,6 +11,7 @@ import {
 } from "./counterSlice";
 import { VictoryBar, VictoryChart } from "victory";
 import styles from "./Counter.module.scss";
+import { assign } from "lodash";
 
 export function Counter() {
   const index = useSelector(selectIndex);
@@ -20,32 +21,129 @@ export function Counter() {
   const isEnd = useSelector(selectEnd);
   const dispatch = useDispatch();
 
-  if (isEnd) {
-    return (
-      <>
-        <div className={styles.row}>
-          <h1>Your results...</h1>
-        </div>
-        <div className={styles.row} style={{ width: 400 }}>
-          <VictoryChart domainPadding={{ x: 20 }}>
-            <VictoryBar
-              data={scoresToData(scores)}
-              x="platform"
-              y="score"
-              domain={{ y: [-10, 25] }}
-            />
-          </VictoryChart>
-        </div>
-      </>
-    );
+  // --- Basic Victory chart theming ---
+  
+  // Colours
+  const colors = [
+    "#252525",
+    "#525252",
+    "#737373",
+    "#969696",
+    "#bdbdbd",
+    "#d9d9d9",
+    "#f0f0f0"
+  ];
+  const black = '#222222';
+  const greyMid = '#747474';
+  const greyLight = '#d4d4d4';
+  const whiteOff = '#f4f7f5';
+  const white = '#ffffff';
+  const orange = '#ff6100';
+  
+  // Typography
+  const sansSerif = "'Inter', sans-serif";
+  const letterSpacing = "normal";
+  const fontSize = 14;
+  
+  // Layout
+  const baseProps = {
+    width: 450,
+    height: 300,
+    padding: 50,
+    colorScale: colors
+  };
+
+  // Labels
+  const baseLabelStyles = {
+    fontFamily: sansSerif,
+    fontSize,
+    letterSpacing,
+    padding: 10,
+    fill: black,
+    stroke: "transparent"
+  };
+  const centeredLabelStyles = assign({ textAnchor: "middle" }, baseLabelStyles);
+
+  // Strokes
+  const strokeLinecap = "round";
+  const strokeLinejoin = "round";
+
+  // Construct theme
+
+  const victoryTheme = {
+    axis: assign(
+      {
+        style: {
+          axis: {
+            fill: "transparent",
+            stroke: greyMid,
+            strokeWidth: 1,
+            strokeLinecap,
+            strokeLinejoin
+          },
+          axisLabel: assign({}, centeredLabelStyles, {
+            padding: 25
+          }),
+          grid: {
+            fill: "none",
+            stroke: "none",
+            pointerEvents: "painted"
+          },
+          ticks: {
+            fill: "transparent",
+            size: 1,
+            stroke: "transparent"
+          },
+          tickLabels: baseLabelStyles
+        }
+      },
+      baseProps
+    ),
+    bar: assign(
+      {
+        style: {
+          data: {
+            fill: orange,
+            padding: 20,
+            strokeWidth: 0
+          },
+          labels: baseLabelStyles
+        }
+      },
+      baseProps
+    )
   }
 
-  console.log(styles);
+  // --- /theme ---
+
+  if (isEnd) {
+    return (
+      <div>
+        <header className="app-header">
+          <div className={styles.row}>
+            <h1 className={styles.results}>Your results...</h1>
+          </div>
+        </header>
+        <article className="app-article">
+          <div className={styles.row} style={{ width: 400 }}>
+            <VictoryChart theme={victoryTheme} domainPadding={{ x: 20 }}>
+              <VictoryBar
+                data={scoresToData(scores)}
+                x="platform"
+                y="score"
+                domain={{ y: [-10, 25] }}
+              />
+            </VictoryChart>
+          </div>
+        </article>
+      </div>
+    );
+  }
 
   return (
     <div>
       <header className="app-header">
-      <div className={styles.row}>
+        <div className={styles.row}>
           <button
             className={styles['button-back']}
             aria-label="Back"
