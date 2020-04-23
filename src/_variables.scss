@@ -1,0 +1,45 @@
+// COLOURS ---------------------------------------------------------------------
+// https://coolors.co/222222-747474-d4d4d4-f4f7f5-ffffff-ff6100
+
+$black: #222222;
+$greyMid: #747474;
+$greyLight: #d4d4d4; // Was $silver
+$whiteOff: #f4f7f5;
+$white: #ffffff;
+$orange: #ff6100;
+
+// MIXINS ----------------------------------------------------------------------
+
+// Lighten a color
+// @param {Color} $color - color to tint
+// @return {Color}
+@function tint-25($color) {
+  @return mix($white, $color, 25%);
+}
+@function tint-50($color) {
+  @return mix($white, $color, 50%);
+}
+@function tint-75($color) {
+  @return mix($white, $color, 75%);
+}
+@function tint-max($color) {
+  @return mix($white, $color, 85%);
+}
+
+// Darken a color
+// @param {Color} $color - color to shade
+// @return {Color}
+@function shade-25($color) {
+  @return mix($black, $color, 25%);
+}
+@function shade-50($color) {
+  @return mix($black, $color, 50%);
+}
+@function shade-75($color) {
+  @return mix($black, $color, 75%);
+}
+@function shade-max($color) {
+  @return mix($black, $color, 85%);
+}
+
+// -----------------------------------------------------------------------------

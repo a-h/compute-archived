@@ -1,0 +1,35 @@
+@import './_variables.scss';
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $whiteOff;
+  color: $black;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-logo {
+    animation: App-logo-float infinite 3s ease-in-out;
+  }
+}
+
+.app-header,
+.app-article,
+.app-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20%; // Need some media queries to amend left/right margin for mobile
+}
+
+.app-aside {
+  margin-top: 4.0rem;
+  margin-bottom: 1.0rem;
+  border-top: 1px solid $greyLight;
+  padding-top: 1.0rem;
+}
+
+.app-link { color: $black; }
