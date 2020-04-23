@@ -3,10 +3,28 @@
 
 $black: #222222;
 $greyMid: #747474;
-$greyLight: #d4d4d4; // Was $silver
+$greyLight: #d4d4d4;
 $whiteOff: #f4f7f5;
 $white: #ffffff;
 $orange: #ff6100;
+
+// MEDIA QUERIES ---------------------------------------------------------------
+
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
 
 // MIXINS ----------------------------------------------------------------------
 
