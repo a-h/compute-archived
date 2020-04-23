@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const counterSlice = createSlice({
-  name: "counter",
+export const questionnaireSlice = createSlice({
+  name: "questionnaire",
   initialState: {
     index: 0,
     questions: [
@@ -73,29 +73,29 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { next, previous, answer } = counterSlice.actions;
+export const { next, previous, answer } = questionnaireSlice.actions;
 
-export const selectIndex = state => state.counter.index;
-export const selectCount = state => state.counter.questions.length;
-export const selectQuestion = state => state.counter.questions[state.counter.index];
+export const selectIndex = state => state.questionnaire.index;
+export const selectCount = state => state.questionnaire.questions.length;
+export const selectQuestion = state => state.questionnaire.questions[state.questionnaire.index];
 export const selectResult = state => {
   const result = {
     ec2: 0,
     containers: 0,
     lambda: 0,
   };
-  if(!state.counter.answers) {
+  if(!state.questionnaire.answers) {
     return result;
   }
-  for(let i = 0; i < state.counter.answers.length; i ++) {
-    const answer = state.counter.answers[i]
-    const q = state.counter.questions[i];
+  for(let i = 0; i < state.questionnaire.answers.length; i ++) {
+    const answer = state.questionnaire.answers[i]
+    const q = state.questionnaire.questions[i];
     result.ec2 += q.ec2[answer] || 0;
     result.containers += q.containers[answer] || 0;
     result.lambda += q.containers[answer] || 0;
   }
   return result;
 };
-export const selectEnd = state => state.counter.end || false;
+export const selectEnd = state => state.questionnaire.end || false;
 
-export default counterSlice.reducer;
+export default questionnaireSlice.reducer;

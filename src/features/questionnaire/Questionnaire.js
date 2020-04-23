@@ -8,12 +8,12 @@ import {
   selectQuestion,
   selectResult,
   selectEnd,
-} from "./counterSlice";
+} from "./questionnaireSlice";
 import { VictoryBar, VictoryChart } from "victory";
-import styles from "./Counter.module.scss";
+import styles from "./Questionnaire.module.scss";
 import { assign } from "lodash";
 
-export function Counter() {
+export function Questionnaire() {
   const index = useSelector(selectIndex);
   const count = useSelector(selectCount);
   const question = useSelector(selectQuestion);
