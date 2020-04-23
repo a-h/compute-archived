@@ -16,56 +16,83 @@ h1.progress {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2.0rem 0 0;
   color: $greyMid;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 400;
+  @include for-tablet-portrait-up {
+    margin-top: 1.0rem;
+    font-size: 1.5rem;
+  }
+  @include for-desktop-up {
+    margin-top: 2.0rem;
+  }
 }
 
   .q-num {
     @extend .progress;
     padding: 0 0.5rem;
     color: tint-25($black);
-    font-size: 2.0rem;
+    font-size: 1.6rem;
+    @include for-tablet-portrait-up {
+      font-size: 2.0rem;
+    }
   }
   
   .q-total {
     @extend .progress;
     padding: 0 0.5rem;
     color: tint-25($black);
-    font-size: 2.0rem;
+    font-size: 1.6rem;
+    @include for-tablet-portrait-up {
+      font-size: 2.0rem;
+    }
   }
 
 h1.results {
   @extend h1.progress;
   color: $black;
-  font-size: 3.0rem;
+  font-size: 2.0rem;
   line-height: 3.2rem;
+  @include for-tablet-portrait-up {
+    font-size: 3.0rem;
+  }
 }
 
 h2.question {
   color: $black;
-  font-size: 2.0rem;
+  font-size: 1.6rem;
   font-weight: 400;
-  line-height: 2.4rem;
+  line-height: 2.1rem;
+  @include for-tablet-portrait-up {
+    font-size: 2.0rem;
+    line-height: 2.4rem;
+  }
 }
 
 // --- Buttons ---
 
 .button {
 
-  margin: 0 1.0rem;
+  margin: 0 2.0rem;
   border: 2px solid $greyLight;
   border-radius: 5px;
-  padding: 0.75rem 1.0rem;
+  padding: 0.5rem 0.75rem;
   background-color: tint-75($greyLight);
   color: $black;
-  font-size: 2.0rem;
-  line-height: 2.0rem;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
   outline: none;
   cursor: pointer;
   transition: all 0.2s;
-
+  @include for-tablet-portrait-up {
+    padding: 0.75rem 1.0rem;
+    font-size: 2.0rem;
+    line-height: 2.0rem;
+  }
+  @include for-desktop-up {
+    margin: 0 1.0rem;
+  }
+  
   &:focus {
     border-color: $greyLight;
     background-color: tint-75($greyLight);
@@ -125,10 +152,12 @@ h2.question {
 // --- Rationale list ---
 
 dl.rationale {
-  margin: 0 2.0rem;
   font-size: 1.2rem;
   line-height: 1.5rem;
   text-align: left;
+  @include for-tablet-landscape-up {
+    margin: 0 2.0rem;
+  }
 }
 
 dl.rationale h3 {
