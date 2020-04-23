@@ -113,6 +113,12 @@ h2.question {
     background-color: tint-25($greyLight);
   }
 
+  &:disabled {
+    pointer-events: none;
+    border-color: $greyLight;
+    background-color: $white;
+    color: $greyLight;
+  }
 
 }
 

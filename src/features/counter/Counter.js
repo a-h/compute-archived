@@ -148,6 +148,7 @@ export function Counter() {
             className={styles['button-back']}
             aria-label="Back"
             onClick={() => dispatch(previous())}
+            disabled={index === 0 ? true : false}
           >
             Back
           </button>
